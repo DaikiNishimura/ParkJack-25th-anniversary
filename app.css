@@ -1,0 +1,608 @@
+/* --- ページ全体の基本設定 --- */
+html {
+  /* リンククリック時に滑らかにスクロールさせる指定 */
+  scroll-behavior: smooth;
+  /* ヘッダーの高さ分、スクロール位置をずらす指定 */
+  scroll-padding-top: 70px;
+}
+
+/* --- 上部固定ヘッダー --- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  /* 背景を半透明の黒にしておしゃれに */
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px); /* 背景をすりガラス風にぼかす */
+  z-index: 1000; /* 縦スライダーより手前に表示 */
+}
+
+.header-inner {
+  max-width: 1100px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.header-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 15px; /* メニュー同士の間隔 */
+  align-items: center;
+}
+
+.header-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: opacity 0.3s;
+}
+
+.header-nav a:hover {
+  opacity: 0.7;
+}
+
+/* 申し込みボタン風の装飾 */
+.header-nav .nav-btn {
+  background: #ffffff;
+  color: #000000;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* 1. ブラウザデフォルトの余白を完全にリセット */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* --- ヒーローセクション全体 --- */
+.hero {
+  position: relative;
+  width: 100vw;       /* ビューポートの横幅いっぱいに */
+  height: 100vh;      /* ビューポートの高さいっぱいに */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* --- 縦スライダーのレイアウト --- */
+.vertical-slider-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.slider-column {
+  width: 50%; /* 左右2列（半々） */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* 画像アイテムの指定 */
+.slide-item {
+  width: 100%;
+  height: 250px; /* 画像の長方形の高さ（必要に応じて調整） */
+  flex-shrink: 0;
+  padding: 0; /* 画像同士の微小な隙間 */
+  box-sizing: border-box;
+}
+
+.slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 枠に合わせてトリミング */
+  display: block;
+}
+
+/* --- 上下アニメーションの定義 --- */
+
+/* 下へ流れるアニメーション（左列） */
+@keyframes scroll-down {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+/* 上へ流れるアニメーション（右列） */
+@keyframes scroll-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.track-down {
+  animation: scroll-down 25s linear infinite; /* 25秒でループ */
+}
+
+.track-up {
+  animation: scroll-up 25s linear infinite; /* 25秒でループ */
+}
+
+/* --- 前面に重ねる文字・ロゴエリア --- */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 背景写真に重ねる黒グラデーション（文字を読みやすくするため） */
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.3) 0%,   /* 上は薄く */
+    rgba(0,0,0,0.6) 50%,  /* 中央はロゴのために少し濃く */
+    rgba(0,0,0,0.3) 100%   /* 下は薄く */
+  );
+
+  /* 中央配置のためのFlexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  z-index: 10;
+}
+
+/* 中央コンテンツのラッパー */
+.hero-center-content {
+  display: flex;
+  flex-direction: column; /* 縦に並べる（ロゴ -> キャッチコピー） */
+  align-items: center;
+  padding: 0 20px; /* スマホ時の余白 */
+}
+
+/* --- ロゴと25thテキストのエリア --- */
+.anniv-logo-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px; /* キャッチコピーとの間隔 */
+}
+
+/* 共有ロゴ（スマホサイズをデフォルトに） */
+.parja-logo {
+  width: 280px;  /* スマホでの見え方をベースに調整 */
+  height: auto;
+  display: block;
+  /* 画像が写真に埋もれないよう、かすかにドロップシャドウをかける */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* 25th Anniversary テキスト */
+.anniv-text {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* 洗練されたゴシック系 */
+  color: #ffffff;
+  margin-top: -10px; /* ロゴに少し近づける（デザインによる） */
+}
+
+.anniv-text .num {
+  font-size: 3rem;   /* "25" を大きく */
+  font-weight: bold;
+  letter-spacing: -2px;
+}
+
+.anniv-text .th {
+  font-size: 1.2rem; /* "th" を小さく上付き風に */
+  vertical-align: super;
+  margin-left: 2px;
+}
+
+.anniv-text .anniv {
+  font-size: 1rem;   /* "Anniversary" */
+  text-transform: uppercase; /* すべて大文字に */
+  letter-spacing: 3px;     /* 文字間隔を広げて洗練させる */
+  margin: 0;
+  margin-top: -5px;
+}
+
+.main-copy {
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.6;
+  margin-top: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* カウントダウン全体枠 */
+.countdown-container {
+  text-align: center;
+  margin: 30px auto;
+  padding: 20px 15px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  max-width: 450px;
+}
+
+.countdown-label {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: #aaaaaa;
+  margin: 0 0 12px 0;
+  font-weight: bold;
+}
+
+/* タイマー本体 */
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 12px;
+  border-radius: 8px;
+  min-width: 60px;
+}
+
+.time-num {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.time-unit {
+  font-size: 0.65rem;
+  color: #888888;
+  margin-top: 4px;
+  letter-spacing: 1px;
+}
+
+.colon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+/* パソコン表示調整 */
+@media (min-width: 768px) {
+  .time-block {
+    min-width: 75px;
+    padding: 12px 16px;
+  }
+  .time-num {
+    font-size: 2.4rem;
+  }
+  .time-unit {
+    font-size: 0.75rem;
+  }
+}
+
+/* --- 開催概要セクション --- */
+.section-overview {
+  background-color: #111111; /* ダークモード風シックな背景 */
+  color: #ffffff;
+  padding: 80px 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: 3px;
+  margin: 0;
+  color: #ffffff;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #888888;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  margin-bottom: 40px;
+}
+
+/* 情報を囲むカード */
+.overview-card {
+  background: #1a1a1a;
+  border: 1px solid #333333;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.info-list {
+  margin: 0;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-item dt {
+  font-weight: bold;
+  color: #888888;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.info-item dd {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.highlight-text {
+  font-size: 1.3rem !important;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* アクセス一覧の装飾 */
+.access-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.access-list li {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+/* 路線タグ（アクセント用） */
+.station-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+  font-weight: bold;
+}
+.chiyoda { background: #00bb85; color: #fff; }
+.jr { background: #f28b00; color: #fff; }
+.marunouchi { background: #e60012; color: #fff; }
+
+/* 住所テキスト */
+.venue-address {
+  font-size: 0.85rem;
+  color: #aaaaaa;
+  margin: 4px 0 12px 0;
+}
+
+/* Googleマップ直リンクボタン */
+.map-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #2c2c2e;
+  color: #34c759; /* Googleマップ風・または見やすいグリーン */
+  border: 1px solid #3a3a3c;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.map-link-btn:hover {
+  background-color: #3a3a3c;
+  border-color: #48484a;
+  transform: translateY(-1px);
+}
+
+.map-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* 埋め込みマップエリア */
+.map-embed-wrapper {
+  margin-top: 25px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333333;
+}
+
+.map-embed-wrapper iframe {
+  display: block;
+  /* ダークモード風サイトに馴染ませるための地図フィルター（お好みで調整） */
+  filter: grayscale(20%) contrast(90%);
+}
+
+/* --- タイムスケジュールセクション --- */
+.section-schedule {
+  background-color: #0d0d0d;
+  color: #ffffff;
+  padding: 80px 20px;
+}
+
+/* タイムラインの親要素 */
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 40px auto 0 auto;
+  padding-left: 30px; /* 左側の縦線用の余白 */
+}
+
+/* 中央を貫く縦線 */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: 7px;
+  width: 2px;
+  background: #333333;
+}
+
+/* 各タイムライン項目 */
+.timeline-item {
+  position: relative;
+  margin-bottom: 35px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* 縦線上のドット（ポッチ） */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 3px solid #0d0d0d;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
+
+/* 確定していない項目のドット */
+.timeline-item.secret::before {
+  background-color: #555555;
+  box-shadow: none;
+}
+
+/* 時間表示 */
+.timeline-time {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #888888;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.timeline-item:first-child .timeline-time,
+.timeline-item:last-child .timeline-time {
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+/* コンテンツカード */
+.timeline-content {
+  background: #181818;
+  border: 1px solid #282828;
+  border-radius: 10px;
+  padding: 18px 22px;
+}
+
+.timeline-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0 0 6px 0;
+  color: #ffffff;
+}
+
+.timeline-desc {
+  font-size: 0.88rem;
+  color: #aaaaaa;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --- AND MORE (ティーザー枠) の特別装飾 --- */
+.timeline-item.teaser-box .timeline-content {
+  background: linear-gradient(135deg, #1f1f1f 0%, #121212 100%);
+  border: 1px solid #444444;
+  position: relative;
+}
+
+.timeline-item.teaser-box .timeline-title {
+  color: #ffffff;
+}
+
+/* Coming Soon バッジ */
+.coming-soon-badge {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #000000;
+  background: #ffffff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  animation: badge-pulse 2s infinite;
+}
+
+/* バッジの微かな点滅アニメーション */
+@keyframes badge-pulse {
+  0% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+  100% { opacity: 0.8; transform: scale(1); }
+}
+
+/* 注記テキスト */
+.schedule-note {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666666;
+  margin-top: 40px;
+}
+
+/* パソコン表示調整 */
+@media (min-width: 768px) {
+  .timeline {
+    padding-left: 40px;
+  }
+  .timeline::before {
+    left: 11px;
+  }
+  .timeline-item::before {
+    left: -40px;
+    width: 14px;
+    height: 14px;
+  }
+  .timeline-title {
+    font-size: 1.25rem;
+  }
+  .timeline-desc {
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkJack 25th Anniversary</title>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="robots" content="noindex,nofollow">
+</head>
+<script src="app.js"></script>
+<body>
+  
+<!-- 1. 画面上部に固定するヘッダーナビゲーション -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">Park Jack 25th ANNIV.</div>
+    <nav class="header-nav">
+      <ul>
+        <li><a href="#overview">開催概要</a></li>
+        <li><a href="#access">アクセス</a></li>
+        <li><a href="#schedule">タイムスケジュール</a></li>
+        <li><a href="#entry" class="nav-btn">参加申し込み</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <!-- 背景の縦スライダーエリア -->
+  <div class="vertical-slider-wrapper">
+    
+    <!-- 1列目（左）：上から下 -->
+    <div class="slider-column col-left">
+      <div class="slider-track track-down">
+        <div class="slide-item"><img src="pj4th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj9th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj11th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj12th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj22th_1.jpg" alt=""></div>
+        <!-- ループ用複製 -->
+        <div class="slide-item"><img src="pj4th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj9th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj11th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj12th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj22th_1.jpg" alt=""></div>
+      </div>
+    </div>
+
+    <!-- 2列目（右 / スマホではこれが右列になる）：下から上 -->
+    <div class="slider-column col-right">
+      <div class="slider-track track-up">
+        <div class="slide-item"><img src="pj14th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj15th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj17th_3.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj19th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj22th_1.jpg" alt=""></div>
+        <!-- ループ用複製 -->
+        <div class="slide-item"><img src="pj14th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj15th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj17th_3.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj19th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj22th_1.jpg" alt=""></div>
+      </div>
+    </div>
+
+    <!-- 3列目（中央 / PC表示時のみ出現）：上から下 -->
+    <div class="slider-column col-center">
+      <div class="slider-track track-down">
+        <div class="slide-item"><img src="pj17th_3.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj19th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj22th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj2th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj2th_2.jpg" alt=""></div>
+        <!-- ループ用複製 -->
+        <div class="slide-item"><img src="pj17th_3.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj19th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj22th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj2th_1.jpg" alt=""></div>
+        <div class="slide-item"><img src="pj2th_2.jpg" alt=""></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 画像の上に重ねるオーバーレイ・コンテンツ -->
+  <div class="hero-overlay">
+    <div class="hero-center-content">
+      
+      <!-- 25周年ロゴエリア -->
+      <div class="anniv-logo-wrap">
+        <!-- 共有いただいたロゴ（背景透過済みのもの） -->
+        <img src="logo-anniv.png" alt="PARJA Double Dutch Club" class="parja-logo">
+        
+        <!-- ミキハウスのように、ロゴに重ねるか近くに配置するテキスト -->
+        <div class="anniv-text">
+          <span class="num">25</span><span class="th">th</span>
+          <p class="anniv">Anniversary</p>
+        </div>
+      </div>
+      <h1 class="main-copy">25年分の想いを、<br>つないで、跳んで、未来へ</h1>
+    </div>
+  </div>
+</section>
+
+<!-- カウントダウンエリア -->
+<div class="countdown-container">
+  <p class="countdown-label">EVENT COUNTDOWN</p>
+  <div id="countdown" class="countdown-timer">
+    <div class="time-block">
+      <span id="days" class="time-num">00</span>
+      <span class="time-unit">DAYS</span>
+    </div>
+    <span class="colon">:</span>
+    <div class="time-block">
+      <span id="hours" class="time-num">00</span>
+      <span class="time-unit">HOURS</span>
+    </div>
+    <span class="colon">:</span>
+    <div class="time-block">
+      <span id="minutes" class="time-num">00</span>
+      <span class="time-unit">MINS</span>
+    </div>
+    <span class="colon">:</span>
+    <div class="time-block">
+      <span id="seconds" class="time-num">00</span>
+      <span class="time-unit">SECS</span>
+    </div>
+  </div>
+</div>
+
+<!-- 2. 開催概要・アクセス セクション -->
+<section id="overview" class="section-overview">
+  <div class="container">
+    <h2 class="section-title">EVENT OVERVIEW</h2>
+    <p class="section-subtitle">開催概要・アクセス</p>
+
+    <div class="overview-card">
+      <dl class="info-list">
+        <!-- 日程 -->
+        <div class="info-item">
+          <dt>日時</dt>
+          <dd class="highlight-text">2026年12月13日（日）</dd>
+        </div>
+
+        <!-- 会場 ＋ Googleマップボタン -->
+        <div class="info-item">
+          <dt>会場</dt>
+          <dd>
+            <div class="venue-name">ワテラスコモンホール</div>
+            <p class="venue-address">〒101-0063 東京都千代田区神田淡路町2丁目101 ワテラスコモン 3F</p>
+
+            <!-- ▼ Googleマップ直リンクボタン ▼ -->
+            <a href="https://maps.app.goo.gl/Yervf1yRCEsL7n2Y6" target="_blank" rel="noopener noreferrer" class="map-link-btn">
+              <svg class="map-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              Google Maps で開く
+            </a>
+          </dd>
+        </div>
+
+        <!-- アクセス -->
+        <div class="info-item" id="access">
+          <dt>アクセス</dt>
+          <dd>
+            <ul class="access-list">
+              <li><span class="station-tag chiyoda">千代田線</span> 東京メトロ千代田線「新御茶ノ水」駅 徒歩約2分</li>
+              <li><span class="station-tag jr">JR</span> JR「御茶ノ水」駅 徒歩約3分</li>
+              <li><span class="station-tag marunouchi">丸ノ内線</span> 東京メトロ丸ノ内線「淡路町」駅 徒歩約2分</li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+
+      <!-- ▼ 埋め込みインタラクティブマップ（ページ内で地図が見える） ▼ -->
+      <div class="map-embed-wrapper">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.236636750346!2d139.7656209763714!3d35.69698502985165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c0f7b11c341%3A0x7d0a2fefdf11d88d!2z44Ov44OG44Op44K544Kz44Oi44Oz44Oa44O844Or!5e0!3m2!1sja!2sjp!4v1710000000000!5m2!1sja!2sjp" 
+          width="100%" 
+          height="280" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- タイムスケジュール セクション -->
+<section id="schedule" class="section-schedule">
+  <div class="container">
+    <h2 class="section-title">TIME SCHEDULE</h2>
+    <p class="section-subtitle">タイムスケジュール</p>
+
+    <!-- タイムラインエリア -->
+    <div class="timeline">
+      
+      <!-- 13:00 オープニング -->
+      <div class="timeline-item">
+        <div class="timeline-time">13:00</div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">OPENING</h3>
+          <p class="timeline-desc">25周年の宴が幕を開けるオープニング演出！</p>
+        </div>
+      </div>
+
+      <!-- コンテンツ（Coming Soon） -->
+      <div class="timeline-item secret">
+        <div class="timeline-time">──:──</div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">SHOWCASE</h3>
+          <p class="timeline-desc">世代を超えた情熱のぶつかり合い。パフォーマンス！</p>
+        </div>
+      </div>
+
+      <div class="timeline-item secret">
+        <div class="timeline-time">──:──</div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">25th ANNIVERSARY QUIZ</h3>
+          <p class="timeline-desc">豪華景品あり！？Paer Jackの25年史を振り返る全員参加クイズ</p>
+        </div>
+      </div>
+
+      <!-- 他にも盛りだくさん（ティーザー枠） -->
+      <div class="timeline-item teaser-box">
+        <div class="timeline-time">SPECIAL</div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">AND MORE...</h3>
+          <p class="timeline-desc">他にもコンテンツ企画中！</p>
+          <span class="coming-soon-badge">DETAILS COMING SOON</span>
+        </div>
+      </div>
+
+      <!-- 4年生引退パフォーマンス -->
+      <div class="timeline-item secret">
+        <div class="timeline-time">──:──</div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">4th GRADE FINAL STAGE</h3>
+          <p class="timeline-desc">4年生 引退パフォーマンス & メモリアルムービー</p>
+        </div>
+      </div>
+
+      <!-- 18:00 エンディング -->
+      <div class="timeline-item">
+        <div class="timeline-time">18:00</div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">ENDING & FREE TIME</h3>
+          <p class="timeline-desc">集合写真撮影 / 現役・OBOG 歓談タイム・クロージング</p>
+        </div>
+      </div>
+
+    </div><!-- /.timeline -->
+
+    <!-- 全体注記 -->
+    <p class="schedule-note">※詳細なタイムテーブルおよび各コンテンツの出演順は順次公開いたします。</p>
+
+  </div>
+</section>
+
+</body>
+
+</html>
