@@ -65,6 +65,23 @@ html {
   font-weight: bold;
 }
 
+/* ==============================================
+   スマホでの上部ヘッダーメニュー調整
+   ============================================== */
+@media (max-width: 767px) {
+  .header-nav ul {
+    gap: 8px; /* メニュー同士の間隔を少し詰める */
+  }
+  
+  .header-nav a {
+    font-size: 0.75rem; /* 文字サイズを少し調整して綺麗に収める */
+  }
+  
+  .header-logo {
+    font-size: 0.9rem;
+  }
+}
+
 /* 1. ブラウザデフォルトの余白を完全にリセット */
 html, body {
   margin: 0;
@@ -102,6 +119,12 @@ html, body {
   position: relative;
 }
 
+/* 3列目（col-center または col-3）をスマホでは完全に隠す */
+.col-center,
+.slider-column:nth-child(3) {
+  display: none !important;
+}
+
 .slider-track {
   display: flex;
   flex-direction: column;
@@ -122,6 +145,22 @@ html, body {
   height: 100%;
   object-fit: cover; /* 枠に合わせてトリミング */
   display: block;
+}
+
+/* ==============================================
+   2. パソコン表示時（画面幅 768px 以上：3列設定）
+   ============================================== */
+@media (min-width: 768px) {
+  /* PC表示時：各列の幅を33.333%（3列）にする */
+  .slider-column {
+    width: 33.333% !important;
+  }
+
+  /* 3列目を復活させる */
+  .col-center,
+  .slider-column:nth-child(3) {
+    display: block !important;
+  }
 }
 
 /* --- 上下アニメーションの定義 --- */
